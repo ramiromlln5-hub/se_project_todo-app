@@ -9,17 +9,15 @@ class FormValidator {
     this._errorClass = settings.errorClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._inactiveButtonClass = settings.inactiveButtonClass;
-  } //
-  //HAVING TROUBLE GETTING THE INPUT ERROR TO SHOW
-  //
+  }
+
   _showInputError = (inputElement, errorMessage) => {
     const errorElementId = `#${inputElement.id}-error`;
     const errorElement = this._formElement.querySelector(errorElementId);
 
-    console.log(errorElement);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add(this._inputErrorClass);
-    console.log(errorElement);
+    inputElement.classList.add(this._inputErrorClass);
+    errorElement.classList.add(this._errorClass);
   };
 
   _hideInputError = (inputElement) => {
@@ -32,11 +30,7 @@ class FormValidator {
 
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-      this._showInputError(
-        inputElement,
-        inputElement.validationMessage,
-        //settings,
-      );
+      this._showInputError(inputElement, inputElement.validationMessage);
     } else {
       this._hideInputError(inputElement);
     }
