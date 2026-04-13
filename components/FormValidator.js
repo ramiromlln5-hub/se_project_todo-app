@@ -50,7 +50,7 @@ class FormValidator {
       submitButtonElement.classList.add(this._inactiveButtonClass);
       submitButtonElement.disabled = true;
     } else {
-      submitButtonElement.classList.remove(this._errorClassinactiveButtonClass);
+      submitButtonElement.classList.remove(this._inactiveButtonClass);
       submitButtonElement.disabled = false;
     }
   }
@@ -76,6 +76,18 @@ class FormValidator {
     });
 
     this._setEventListeners(this._formElement);
+  }
+
+  resetValidation() {
+    const inputList = Array.from(
+      this._formElement.querySelectorAll(this._inputSelector),
+    );
+
+    inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+
+    this._toggleButtonState(inputList);
   }
 }
 
