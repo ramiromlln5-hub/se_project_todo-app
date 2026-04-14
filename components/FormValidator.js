@@ -79,6 +79,7 @@ class FormValidator {
   }
 
   resetValidation() {
+    this._formElement.reset();
     const inputList = Array.from(
       this._formElement.querySelectorAll(this._inputSelector),
     );
