@@ -8,6 +8,7 @@ const addTodoPopup = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopup.querySelector(".popup__form");
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
+const popupVisible = document.querySelector(".popup_visible");
 
 const openModal = (modal) => {
   modal.classList.add("popup_visible");
@@ -16,6 +17,12 @@ const openModal = (modal) => {
 const closeModal = (modal) => {
   modal.classList.remove("popup_visible");
 };
+
+addTodoPopup.addEventListener("click", (evt) => {
+  if (evt.target === addTodoPopup) {
+    closeModal(addTodoPopup);
+  }
+});
 
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
