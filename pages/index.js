@@ -19,9 +19,9 @@ function handleCheck(completed) {
 }
 
 function handleDelete(completed) {
+  todoCounter.updateTotal(false);
   if (completed) {
     todoCounter.updateCompleted(false);
-    todoCounter.updateTotal(false);
   }
 }
 
@@ -85,7 +85,7 @@ addTodoPopupEl.addEventListener("click", (evt) => {
 const generateTodo = (data) => {
   const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
   const todoElement = todo.getView();
-  handleDelete();
+
   return todoElement;
 };
 
